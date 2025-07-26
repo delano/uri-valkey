@@ -1,7 +1,7 @@
 # .rubocop.yml
 
 AllCops:
-  TargetRubyVersion: 3.2
+  TargetRubyVersion: 2.7
 
 Metrics/ModuleLength:
   Exclude:
