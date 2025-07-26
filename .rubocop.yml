@@ -25,10 +25,10 @@ Metrics/PerceivedComplexity: # new in 1.0
 Style/FormatStringToken: # new in 1.1
   Enabled: false
 Style/StringLiterals:
-  Enabled: false
+  Enabled: true
   EnforcedStyle: single_quotes
 Style/StringLiteralsInInterpolation:
-  Enabled: false
+  Enabled: true
   EnforcedStyle: single_quotes
 Style/FrozenStringLiteralComment:
   Enabled: false
