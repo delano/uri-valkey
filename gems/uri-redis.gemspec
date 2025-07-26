@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'lib/uri/redis/version'
+require_relative '../lib/uri_redis/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'uri-redis'
@@ -22,7 +22,8 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   spec.files = Dir.chdir(File.dirname(__dir__)) do
-    Dir.glob('lib/uri-redis/**/*').select { |f| File.file?(f) } +
+    Dir.glob('lib/uri_redis/**/*').select { |f| File.file?(f) } +
+      Dir.glob('lib/uri_redis.rb') +
       Dir.glob('lib/uri-redis.rb') +
       ['README.md', 'LICENSE.txt', 'CHANGES.txt'].select { |f| File.exist?(f) }
   end

@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-require 'bundler/gem_tasks'
 require 'rubocop/rake_task'
 require 'rspec/core/rake_task'
-
 
 RuboCop::RakeTask.new
 
@@ -13,11 +11,11 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
 end
 
 RSpec::Core::RakeTask.new('spec:redis') do |spec|
-  spec.pattern = 'spec/uri-redis/*_spec.rb'
+  spec.pattern = 'spec/uri/redis_spec.rb'
 end
 
 RSpec::Core::RakeTask.new('spec:valkey') do |spec|
-  spec.pattern = 'spec/uri-valkey/*_spec.rb'
+  spec.pattern = 'spec/uri/valkey_spec.rb'
 end
 
 require 'rdoc/task'

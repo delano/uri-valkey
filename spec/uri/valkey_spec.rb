@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-require_relative "../../lib/uri-valkey"
+require_relative '../../lib/uri_valkey'
 
 RSpec.describe URI::Valkey do
-
   it 'Default database is 0' do
     result = begin
-      uri = URI.parse "valkey://localhost"
+      uri = URI.parse 'valkey://localhost'
       [uri.db, uri.host, uri.port]
     end
     expect(result).to eq([0, 'localhost', 6379])
@@ -14,7 +13,7 @@ RSpec.describe URI::Valkey do
 
   it 'Can parse a valkey URI with a database' do
     result = begin
-      uri = URI.parse "valkey://localhost/2"
+      uri = URI.parse 'valkey://localhost/2'
       [uri.db, uri.host, uri.port]
     end
     expect(result).to eq([2, 'localhost', 6379])
@@ -22,15 +21,15 @@ RSpec.describe URI::Valkey do
 
   it 'Parsed URI can be accessed via conf hash' do
     result = begin
-      uri = URI.parse "valkey://localhost:16739/2"
+      uri = URI.parse 'valkey://localhost:16739/2'
       [uri.scheme, uri.conf]
     end
-    expect(result).to eq(['valkey', { host: "localhost", port: 16739, db: 2, ssl: false }])
+    expect(result).to eq(['valkey', { host: 'localhost', port: 16_739, db: 2, ssl: false }])
   end
 
   it 'Can parse a key name' do
     result = begin
-      uri = URI.parse "valkey://localhost/2/v1:arbitrary:key"
+      uri = URI.parse 'valkey://localhost/2/v1:arbitrary:key'
       [uri.key, uri.db, uri.host, uri.port]
     end
     expect(result).to eq(['v1:arbitrary:key', 2, 'localhost', 6379])
@@ -38,7 +37,7 @@ RSpec.describe URI::Valkey do
 
   it 'Can set db' do
     result = begin
-      uri = URI.parse "valkey://localhost/2/v1:arbitrary:key"
+      uri = URI.parse 'valkey://localhost/2/v1:arbitrary:key'
       uri.db = 6
       uri.to_s
     end
@@ -47,8 +46,8 @@ RSpec.describe URI::Valkey do
 
   it 'Can set key' do
     result = begin
-      uri = URI.parse "valkey://localhost/2/v1:arbitrary:key"
-      uri.key = "v2:arbitrary:key"
+      uri = URI.parse 'valkey://localhost/2/v1:arbitrary:key'
+      uri.key = 'v2:arbitrary:key'
       uri.to_s
     end
     expect(result).to eq('valkey://localhost/2/v2:arbitrary:key')
@@ -56,9 +55,9 @@ RSpec.describe URI::Valkey do
 
   it 'Support valkeys' do
     result = begin
-      uri = URI.parse "valkeys://localhost"
+      uri = URI.parse 'valkeys://localhost'
       [uri.scheme, uri.conf]
     end
-    expect(result).to eq(["valkeys", { host: "localhost", port: 6379, db: 0, ssl: true }])
+    expect(result).to eq(['valkeys', { host: 'localhost', port: 6379, db: 0, ssl: true }])
   end
 end
