@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# Based on https://github.com/ruby/uri/blob/master/bin/console
+
 require "bundler/setup"
 require "uri/redis"
 
