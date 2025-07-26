@@ -62,5 +62,5 @@ jobs:
       - name: Run the default task
         run: bundle exec rake
 
-      - name: Run the tryouts
-        run: bundle exec try -v
+      - name: Run RSpec tests
+        run: bundle exec rake spec
