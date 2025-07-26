@@ -21,7 +21,7 @@ end
 require 'rdoc/task'
 RDoc::Task.new do |doc|
   doc.main   = 'README.md'
-  doc.title  = 'URI::Redis and URI::Valkey - handle Uniform Resource Identifier parsing for Redis and Valkey'
+  doc.title  = 'URI::Valkey and URI::Redis - handle Uniform Resource Identifier parsing for Valkey and Redis'
   doc.rdoc_files = FileList.new %w[lib README.md LICENSE.txt]
   doc.rdoc_dir = '_site' # for github pages
 end

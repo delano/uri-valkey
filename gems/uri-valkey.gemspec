@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/delano/uri-valkey/'
-  spec.metadata['changelog_uri'] = 'https://github.com/delano/uri-valkey/blob/main/CHANGES.txt#L1'
+  spec.metadata['changelog_uri'] = 'https://github.com/delano/uri-valkey/blob/main/CHANGES.txt'
 
   # Specify which files should be added to the gem when it is released.
   spec.files = Dir.chdir(File.expand_path('..', __dir__)) do
