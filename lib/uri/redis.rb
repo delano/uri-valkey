@@ -1,6 +1,5 @@
-require "uri"
-require "uri/generic"
-require "redis"
+require 'uri'
+require 'uri/generic'
 
 # URI::Redis - adds support for Redis URIs to core.
 module URI
