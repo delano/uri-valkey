@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+# Based on https://github.com/ruby/uri/blob/master/bin/setup
+
 set -euo pipefail
 IFS=$'\n\t'
 set -vx

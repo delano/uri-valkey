@@ -1,34 +1,34 @@
-# URI-Redis v1.3 (2024-06-15)
+# URI-Valkey
 
-Creates a URI object for Redis URLs.
+Creates a URI object for Valkey URLs.
 
 e.g.
 
-    redis://host:port/dbindex
+    valkey://host:port/dbindex
 
 ## Usage
 
 ```ruby
-    require 'uri/redis'
+    require 'uri/valkey'
 
-    conf = URI.parse 'redis://localhost:4380/2'
-    conf.scheme               # => "redis"
+    conf = URI.parse 'valkey://localhost:6379/0'
+    conf.scheme               # => "valkey"
     conf.host                 # => localhost
-    conf.port                 # => 4380
-    conf.db                   # => 2
-    conf.to_s                 # => redis://localhost:4380/2
+    conf.port                 # => 6379
+    conf.db                   # => 0
+    conf.to_s                 # => valkey://localhost:6379/0
 ```
 
 ### SSL Support
 
-SSL is supported by using the `rediss` scheme. Note: SSL support is only available in Redis (Server) 6.0 and later and via redis-rb 4.7 and later.
+SSL is supported by using the `valkeys` scheme.
 
 ```ruby
-    require 'uri/redis'
+    require 'uri/valkey'
 
-    conf = URI.parse 'rediss://localhost:4380/2'
-    conf.scheme               # => "rediss"
-    conf.to_s                 # => rediss://localhost:4380/2
+    conf = URI.parse 'valkeys://localhost:6379/0'
+    conf.scheme               # => "valkeys"
+    conf.to_s                 # => valkeys://localhost:6379/0
 ```
 
 
@@ -36,13 +36,13 @@ SSL is supported by using the `rediss` scheme. Note: SSL support is only availab
 
 Get it in one of the following ways:
 
-* `gem install uri-redis`
-* `git clone git@github.com:delano/uri-redis.git`
+* `gem install uri-valkey`
+* `git clone git@github.com:delano/uri-valkey.git`
 
 
 ## About
 
-* [Github](https://github.com/delano/uri-redis)
+* [Github](https://github.com/delano/uri-valkey)
 
 
 ## License

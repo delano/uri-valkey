@@ -1,6 +1,5 @@
-require "uri"
-require "uri/generic"
-require "redis"
+require 'uri'
+require 'uri/generic'
 
 # URI::Redis - adds support for Redis URIs to core.
 module URI
@@ -33,16 +32,16 @@ module URI
       return if path.nil?
 
       self.path ||= "/#{DEFAULT_DB}"
-      (self.path.split("/")[2..] || []).join("/")
+      (self.path.split('/')[2..] || []).join('/')
     end
 
     def key=(val)
-      self.path = "/" << [db, val].join("/")
+      self.path = '/' << [db, val].join('/')
     end
 
     def db
       self.path ||= "/#{DEFAULT_DB}"
-      (self.path.split("/")[1] || DEFAULT_DB).to_i
+      (self.path.split('/')[1] || DEFAULT_DB).to_i
     end
 
     def db=(val)
@@ -83,10 +82,10 @@ module URI
     # Based on: https://github.com/chneukirchen/rack/blob/master/lib/rack/utils.rb
     # which was originally based on Mongrel
     def parse_query(query, delim = nil)
-      delim ||= "&;"
+      delim ||= '&;'
       params = {}
-      (query || "").split(/[#{delim}] */n).each do |p|
-        k, v = p.split("=", 2).map { |str| str } # NOTE: uri_unescape
+      (query || '').split(/[#{delim}] */n).each do |p|
+        k, v = p.split('=', 2).map { |str| str } # NOTE: uri_unescape
         k = k.to_sym
         if (cur = params[k])
           if cur.instance_of?(Array)
@@ -103,8 +102,8 @@ module URI
   end
 
   if URI.respond_to?(:register_scheme)
-    URI.register_scheme "REDIS", Redis
-    URI.register_scheme "REDISS", Redis
+    URI.register_scheme 'REDIS', Redis
+    URI.register_scheme 'REDISS', Redis
   else
     @@schemes['REDIS'] = Redis
     @@schemes['REDISS'] = Redis
@@ -114,7 +113,7 @@ end
 # Adds a URI method to Redis
 class Redis
   def self.uri(conf = {})
-    URI.parse format("%s://%s:%s/%s", conf[:ssl] ? 'rediss' : 'redis', conf[:host], conf[:port], conf[:db])
+    URI.parse format('%s://%s:%s/%s', conf[:ssl] ? 'rediss' : 'redis', conf[:host], conf[:port], conf[:db])
   end
 
   def uri
