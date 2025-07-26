@@ -34,7 +34,11 @@ module URI
     end
 
     def key=(val)
-      self.path = "/#{[db, val].join('/')}"
+      self.path = if val && !val.to_s.empty?
+                    "/#{db}/#{val}"
+                  else
+                    "/#{db}"
+                  end
     end
 
     def db
