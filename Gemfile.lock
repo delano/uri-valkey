@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.3)
-    drydock (0.6.9)
+    diff-lcs (1.6.2)
     json (2.13.1)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
@@ -15,6 +15,19 @@ GEM
     rainbow (3.1.1)
     rake (13.3.0)
     regexp_parser (2.10.0)
+    rspec (3.13.1)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.5)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.4)
     rubocop (1.79.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -31,12 +44,6 @@ GEM
       parser (>= 3.3.7.2)
       prism (~> 1.4)
     ruby-progressbar (1.13.0)
-    storable (0.10.0)
-    sysinfo (0.10.0)
-      drydock (< 1.0)
-      storable (~> 0.10)
-    tryouts (2.2.0)
-      sysinfo (~> 0.10)
     tsort (0.2.0)
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
@@ -47,9 +54,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rake (~> 13.0)
-  rubocop (~> 1.21)
-  tryouts (~> 2.2.0)
+  rake
+  rspec
+  rubocop
 
 BUNDLED WITH
    2.5.13
