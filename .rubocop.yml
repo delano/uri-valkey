@@ -1,5 +1,11 @@
+# .rubocop.yml
+
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.2
+
+Metrics/ModuleLength:
+  Exclude:
+    - "spec/**/*"
 
 Gemspec/DeprecatedAttributeAssignment: # new in 1.30
   Enabled: true
