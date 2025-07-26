@@ -7,7 +7,10 @@
 *.env
 *.log
 *.txt
+*.md
+!CHANGES.txt
 !LICENSE.txt
+!README.md
 .ruby-version
 appendonlydir
 etc/config
