@@ -66,7 +66,7 @@ module URI
         host: host,
         port: port,
         db: db,
-        ssl: scheme == 'valkeys'
+        ssl: scheme == 'valkeys' || scheme == 'rediss'
       }.merge(parse_query(query))
       hsh[:password] = password if password
       hsh[:timeout] = hsh[:timeout].to_i if hsh.key?(:timeout)
@@ -104,8 +104,14 @@ module URI
   if URI.respond_to?(:register_scheme)
     URI.register_scheme 'VALKEY', Valkey
     URI.register_scheme 'VALKEYS', Valkey
+    # Cross-scheme support for Redis URLs
+    URI.register_scheme 'REDIS', Valkey
+    URI.register_scheme 'REDISS', Valkey
   else
     @@schemes['VALKEY'] = Valkey
     @@schemes['VALKEYS'] = Valkey
+    # Cross-scheme support for Redis URLs
+    @@schemes['REDIS'] = Valkey
+    @@schemes['REDISS'] = Valkey
   end
 end

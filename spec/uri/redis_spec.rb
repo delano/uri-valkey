@@ -60,4 +60,20 @@ RSpec.describe URI::Redis do
     end
     expect(result).to eq(['rediss', { host: 'localhost', port: 6379, db: 0, ssl: true }])
   end
+
+  it 'Support valkey URLs (cross-scheme compatibility)' do
+    result = begin
+      uri = URI.parse 'valkey://localhost:6379/2'
+      [uri.scheme, uri.db, uri.conf[:ssl]]
+    end
+    expect(result).to eq(['valkey', 2, false])
+  end
+
+  it 'Support valkeys URLs (cross-scheme compatibility)' do
+    result = begin
+      uri = URI.parse 'valkeys://localhost:6379/2'
+      [uri.scheme, uri.db, uri.conf[:ssl]]
+    end
+    expect(result).to eq(['valkeys', 2, true])
+  end
 end
