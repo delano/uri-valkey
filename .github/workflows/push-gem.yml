@@ -1,4 +1,4 @@
-# .github/workflows/push_gem.yml
+# .github/workflows/push-gem.yml
 #
 # Based on https://github.com/ruby/uri/blob/master/.github/workflows/push_gem.yml
 
