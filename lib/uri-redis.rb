@@ -2,4 +2,4 @@
 
 # Compatibility shim for uri-redis.rb
 # This file maintains backward compatibility for code that requires 'uri-redis'
-require_relative 'uri_redis'
+require_relative 'uri/redis'

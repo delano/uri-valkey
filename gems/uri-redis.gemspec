@@ -22,10 +22,12 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   spec.files = Dir.chdir(File.dirname(__dir__)) do
-    Dir.glob('lib/uri_redis/**/*').select { |f| File.file?(f) } +
-      Dir.glob('lib/uri_redis.rb') +
-      Dir.glob('lib/uri-redis.rb') +
-      ['README.md', 'LICENSE.txt', 'CHANGES.txt'].select { |f| File.exist?(f) }
+    [
+      'lib/uri/redis.rb',
+      'lib/uri/redis/version.rb',
+      'lib/uri-redis.rb',
+      'lib/uri_redis.rb'
+    ] + ['README.md', 'LICENSE.txt', 'CHANGES.txt'].select { |f| File.exist?(f) }
   end
   spec.bindir = 'exe'
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }

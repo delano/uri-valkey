@@ -21,10 +21,10 @@ RSpec.describe URI::Valkey do
 
   it 'Parsed URI can be accessed via conf hash' do
     result = begin
-      uri = URI.parse 'valkey://localhost:16739/2'
+      uri = URI.parse 'valkey://localhost:6379/2'
       [uri.scheme, uri.conf]
     end
-    expect(result).to eq(['valkey', { host: 'localhost', port: 16_739, db: 2, ssl: false }])
+    expect(result).to eq(['valkey', { host: 'localhost', port: 6379, db: 2, ssl: false }])
   end
 
   it 'Can parse a key name' do

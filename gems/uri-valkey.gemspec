@@ -22,10 +22,12 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   spec.files = Dir.chdir(File.dirname(__dir__)) do
-    Dir.glob('lib/uri_valkey/**/*').select { |f| File.file?(f) } +
-      Dir.glob('lib/uri_valkey.rb') +
-      Dir.glob('lib/uri-valkey.rb') +
-      ['README.md', 'LICENSE.txt', 'CHANGES.txt'].select { |f| File.exist?(f) }
+    [
+      'lib/uri/valkey.rb',
+      'lib/uri/valkey/version.rb',
+      'lib/uri-valkey.rb',
+      'lib/uri_valkey.rb'
+    ] + ['README.md', 'LICENSE.txt', 'CHANGES.txt'].select { |f| File.exist?(f) }
   end
   spec.require_paths = ['lib']
   spec.metadata['rubygems_mfa_required'] = 'true'

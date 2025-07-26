@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module URI
-  class Redis
+  class Redis < URI::Generic
     VERSION = '1.3.0'
     SUMMARY = 'A Ruby library for parsing, building and normalizing redis URLs'
   end
