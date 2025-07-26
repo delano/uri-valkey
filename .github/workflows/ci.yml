@@ -43,7 +43,7 @@ jobs:
             rubygems: "3.2.3"
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
