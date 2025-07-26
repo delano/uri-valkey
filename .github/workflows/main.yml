@@ -14,45 +14,53 @@ jobs:
     strategy:
       matrix:
         include:
-          - ruby: '3.3'
+          - ruby: "3.5"
             bundler: latest
             rubygems: latest
 
-          - ruby: '3.2'
+          - ruby: "3.4"
             bundler: latest
             rubygems: latest
 
-          - ruby: '3.1'
+          - ruby: "3.3"
             bundler: latest
             rubygems: latest
 
-          - ruby: '3.0'
+          - ruby: "3.2"
             bundler: latest
             rubygems: latest
 
-          - ruby: '2.7'
-            bundler: '2.4.22'
-            rubygems: '3.2.3'
+          - ruby: "3.1"
+            bundler: latest
+            rubygems: latest
+
+          - ruby: "3.0"
+            bundler: latest
+            rubygems: latest
+
+          - ruby: "2.7"
+            bundler: "2.4.22"
+            rubygems: "3.2.3"
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        rubygems: ${{ matrix.rubygems }}
-        bundler: ${{ matrix.bundler }}
-        # When the following is true, also run "bundle install",
-        # and cache the result automatically. Ran into an issue
-        # with the caching and multiple ruby version? See commit
-        # message for this change.
-        bundler-cache: false
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          rubygems: ${{ matrix.rubygems }}
+          bundler: ${{ matrix.bundler }}
+          # When the following is true, also run "bundle install",
+          # and cache the result automatically. Ran into an issue
+          # with the caching and multiple ruby version? See commit
+          # message for this change.
+          bundler-cache: false
 
-    - name: Re-run bundle install
-      run: bundle install
+      - name: Re-run bundle install
+        run: bundle install
 
-    - name: Run the default task
-      run: bundle exec rake
+      - name: Run the default task
+        run: bundle exec rake
 
-    - name: Run the tryouts
-      run: bundle exec try -v
+      - name: Run the tryouts
+        run: bundle exec try -v
