@@ -4,9 +4,9 @@ require 'uri'
 require 'uri/generic'
 
 module URI
-  # Shared module for database URI classes (Redis, Valkey, etc.)
+  # Shared module for Valkey-compatible database URI classes (Redis, Valkey, etc.)
   # Provides common functionality for handling database URIs with database indices and key paths
-  module DatabaseURI
+  module PerfectStrangers
     DEFAULT_PORT = 6379
     DEFAULT_DB = 0
 
@@ -69,7 +69,7 @@ module URI
 
     # Override in including classes to define which schemes use SSL
     def ssl_schemes
-      []
+      raise NotImplementedError, 'ssl_schemes must be implemented in including classes'
     end
 
     # Based on: https://github.com/chneukirchen/rack/blob/master/lib/rack/utils.rb

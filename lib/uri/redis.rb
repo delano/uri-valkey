@@ -2,7 +2,8 @@
 
 require 'uri'
 require 'uri/generic'
-require_relative 'database_uri'
+
+require_relative 'perfect_strangers'
 
 # URI::Redis - adds support for Redis URIs to core.
 module URI
@@ -19,7 +20,7 @@ module URI
   #   uri = URI::Redis.build(host: "localhost", port: 6379, db: 2)
   #   uri.to_s #=> "redis://localhost:6379/2"
   class Redis < URI::Generic
-    include DatabaseURI
+    include PerfectStrangers
 
     private
 
@@ -29,17 +30,17 @@ module URI
   end
 
   if URI.respond_to?(:register_scheme)
-    URI.register_scheme 'REDIS', Redis
-    URI.register_scheme 'REDISS', Redis
+    URI.register_scheme 'REDIS', Redis unless URI.scheme_list.key?('REDIS')
+    URI.register_scheme 'REDISS', Redis unless URI.scheme_list.key?('REDISS')
     # Cross-scheme support for Valkey URLs
-    URI.register_scheme 'VALKEY', Redis
-    URI.register_scheme 'VALKEYS', Redis
+    URI.register_scheme 'VALKEY', Redis unless URI.scheme_list.key?('VALKEY')
+    URI.register_scheme 'VALKEYS', Redis unless URI.scheme_list.key?('VALKEYS')
   else
-    @@schemes['REDIS'] = Redis
-    @@schemes['REDISS'] = Redis
+    @@schemes['REDIS'] = Redis unless @@schemes.key?('REDIS')
+    @@schemes['REDISS'] = Redis unless @@schemes.key?('REDISS')
     # Cross-scheme support for Valkey URLs
-    @@schemes['VALKEY'] = Redis
-    @@schemes['VALKEYS'] = Redis
+    @@schemes['VALKEY'] = Redis unless @@schemes.key?('VALKEY')
+    @@schemes['VALKEYS'] = Redis unless @@schemes.key?('VALKEYS')
   end
 end
 

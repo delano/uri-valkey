@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
     [
       'lib/uri/valkey.rb',
       'lib/uri/valkey/version.rb',
+      'lib/uri/perfect_strangers.rb',
       'lib/uri-valkey.rb',
       'lib/uri_valkey.rb'
     ] + ['README.md', 'LICENSE.txt', 'CHANGES.txt'].select { |f| File.exist?(f) }

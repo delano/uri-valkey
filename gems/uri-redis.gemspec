@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
     [
       'lib/uri/redis.rb',
       'lib/uri/redis/version.rb',
+      'lib/uri/perfect_strangers.rb',
       'lib/uri-redis.rb',
       'lib/uri_redis.rb'
     ] + ['README.md', 'LICENSE.txt', 'CHANGES.txt'].select { |f| File.exist?(f) }
