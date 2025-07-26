@@ -103,8 +103,8 @@ module URI
   end
 
   if URI.respond_to?(:register_scheme)
-    URI.register_scheme "REDIS", Redis
-    URI.register_scheme "REDISS", Redis
+    URI.register_scheme 'REDIS', Redis
+    URI.register_scheme 'REDISS', Redis
   else
     @@schemes['REDIS'] = Redis
     @@schemes['REDISS'] = Redis
