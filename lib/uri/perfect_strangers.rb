@@ -44,9 +44,11 @@ module URI
 
     def db=(val)
       current_key = key
-      self.path = "/#{val}"
-      self.path << "/#{current_key}"
-      self.path
+      self.path = if current_key && !current_key.empty?
+                    "/#{val}/#{current_key}"
+                  else
+                    "/#{val}"
+                  end
     end
 
     def conf
