@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../lib/uri_redis/version'
+require_relative '../lib/uri/redis/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'uri-redis'
@@ -21,17 +21,18 @@ Gem::Specification.new do |spec|
   spec.metadata['changelog_uri'] = 'https://github.com/delano/uri-redis/blob/feature/001-modernize/CHANGES.txt#L1'
 
   # Specify which files should be added to the gem when it is released.
-  spec.files = Dir.chdir(File.dirname(__dir__)) do
-    [
-      'lib/uri/redis.rb',
-      'lib/uri/redis/version.rb',
-      'lib/uri/perfect_strangers.rb',
-      'lib/uri-redis.rb',
-      'lib/uri_redis.rb'
-    ] + ['README.md', 'LICENSE.txt', 'CHANGES.txt'].select { |f| File.exist?(f) }
+  spec.files = Dir.chdir(File.expand_path('..', __dir__)) do
+    %w[
+      lib/uri/redis.rb
+      lib/uri/redis/version.rb
+      lib/uri/perfect_strangers.rb
+      lib/uri-redis.rb
+      lib/uri_redis.rb
+      README.md
+      LICENSE.txt
+      CHANGES.txt
+    ].select { |f| File.exist?(f) }
   end
-  spec.bindir = 'exe'
-  spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
   spec.metadata['rubygems_mfa_required'] = 'true'
 end

@@ -30,18 +30,14 @@ end
 namespace :build do
   desc 'Build uri-redis gem'
   task :redis do
-    Dir.chdir('gems') do
-      sh 'gem build uri-redis.gemspec'
-      sh 'mv uri-redis-*.gem ../pkg/'
-    end
+    sh 'gem build gems/uri-redis.gemspec'
+    sh 'mv uri-redis-*.gem pkg/'
   end
 
   desc 'Build uri-valkey gem'
   task :valkey do
-    Dir.chdir('gems') do
-      sh 'gem build uri-valkey.gemspec'
-      sh 'mv uri-valkey-*.gem ../pkg/'
-    end
+    sh 'gem build gems/uri-valkey.gemspec'
+    sh 'mv uri-valkey-*.gem pkg/'
   end
 
   desc 'Build both gems'

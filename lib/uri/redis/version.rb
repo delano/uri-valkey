@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'uri'
+require 'uri/generic'
+
 module URI
   class Redis < URI::Generic
     VERSION = '1.4.0'
