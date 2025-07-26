@@ -21,11 +21,10 @@ Gem::Specification.new do |spec|
   spec.metadata['changelog_uri'] = 'https://github.com/delano/uri-redis/blob/feature/001-modernize/CHANGES.txt#L1'
 
   # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files = Dir.chdir(__dir__) do
-    `git ls-files -z`.split("\x0").reject do |f|
-      (f == __FILE__) || f.match(%r{\A(?:(?:bin|test|spec|features)/|\.(?:git|circleci)|appveyor)})
-    end
+  spec.files = Dir.chdir(File.dirname(__dir__)) do
+    Dir.glob('lib/uri-redis/**/*').select { |f| File.file?(f) } +
+      Dir.glob('lib/uri-redis.rb') +
+      ['README.md', 'LICENSE.txt', 'CHANGES.txt'].select { |f| File.exist?(f) }
   end
   spec.bindir = 'exe'
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }

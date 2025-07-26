@@ -1,0 +1,1 @@
+require "uri-valkey/valkey"

@@ -1,5 +1,8 @@
+# lib/uri-redis/redis.rb
+
 require 'uri'
 require 'uri/generic'
+
 
 # URI::Redis - adds support for Redis URIs to core.
 module URI

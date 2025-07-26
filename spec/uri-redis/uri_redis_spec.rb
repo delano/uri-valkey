@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../lib/uri/redis'
+require_relative "../../lib/uri-redis"
 
-RSpec.describe 'URI::Redis' do
-  before(:all) do
-    require 'uri/redis'
-  end
-
+RSpec.describe URI::Redis do
   it 'Default database is 0' do
     result = begin
       uri = URI.parse 'redis://localhost'
@@ -25,10 +21,10 @@ RSpec.describe 'URI::Redis' do
 
   it 'Parsed URI can be accessed via conf hash' do
     result = begin
-      uri = URI.parse 'redis://localhost:6379/2'
+      uri = URI.parse "redis://localhost:6379/2"
       [uri.scheme, uri.conf]
     end
-    expect(result).to eq(['redis', { host: 'localhost', port: 6379, db: 2, ssl: false }])
+    expect(result).to eq(['redis', { host: "localhost", port: 6379, db: 2, ssl: false }])
   end
 
   it 'Can parse a key name' do
