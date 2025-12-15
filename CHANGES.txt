@@ -4,8 +4,9 @@ URI-Valkey, CHANGES
 
 * ADDED: Authentication documentation with examples for password-only
   and username+password formats
-* ADDED: Warning about common password URL format mistake
-  (redis://pass@host vs redis://:pass@host)
+* ADDED: Runtime warning when URI has username but no password, which
+  almost always indicates a misconfigured password-only URL
+  (redis://pass@host instead of redis://:pass@host)
 * ADDED: Environment variable examples for VALKEY_URL and REDIS_URL
 
 

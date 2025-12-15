@@ -74,12 +74,15 @@ export REDIS_URL="redis://:mysecretpassword@localhost:6379/0"
 
 # Username + password (Valkey/Redis 6+ ACLs)
 export VALKEY_URL="valkey://myuser:mypassword@localhost:6379/0"
+export REDIS_URL="redis://myuser:mypassword@localhost:6379/0"
 
 # No authentication (development only)
 export VALKEY_URL="valkey://localhost:6379/0"
+export REDIS_URL="redis://localhost:6379/0"
 ```
 
 ### SSL Support
+
 
 SSL is supported by using the `valkeys` scheme:
 
