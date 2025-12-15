@@ -71,7 +71,7 @@ module URI
       if user && !user.empty? && password.nil?
         warn "[uri-redis] Warning: URI has username '#{user}' but no password. " \
              "For password-only auth, use '#{scheme}://:password@host' format. " \
-             "See: https://github.com/delano/uri-valkey#authentication"
+             'See: https://github.com/delano/uri-valkey#authentication'
       end
 
       hsh
