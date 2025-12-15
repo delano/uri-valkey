@@ -30,6 +30,55 @@ conf.to_s                 # => "valkey://localhost:6379/0"
 conf.conf                 # => {:host=>"localhost", :port=>6379, :db=>0, :ssl=>false}
 ```
 
+## Authentication
+
+### Password-only authentication (most common)
+
+For Valkey/Redis servers using simple password authentication, use a **colon before the password** with an empty username:
+
+```ruby
+# Correct format - note the colon before the password
+uri = URI.parse 'valkey://:mysecretpassword@localhost:6379/0'
+uri.password              # => "mysecretpassword"
+uri.conf[:password]       # => "mysecretpassword"
+uri.conf                  # => {:host=>"localhost", :port=>6379, :db=>0, :ssl=>false, :password=>"mysecretpassword"}
+```
+
+> **⚠️ Common mistake:** Omitting the colon treats the password as a username!
+>
+> ```ruby
+> # WRONG - password is parsed as username, not password!
+> uri = URI.parse 'valkey://mysecretpassword@localhost:6379/0'
+> uri.user                  # => "mysecretpassword"
+> uri.password              # => nil
+> uri.conf[:password]       # => nil  # No password will be sent!
+> ```
+
+### Username and password authentication (Valkey/Redis 6+ ACLs)
+
+For Valkey or Redis 6+ servers using ACL with username/password:
+
+```ruby
+uri = URI.parse 'valkey://myuser:mypassword@localhost:6379/0'
+uri.user                  # => "myuser"
+uri.password              # => "mypassword"
+uri.conf[:password]       # => "mypassword"
+```
+
+### Environment variable examples
+
+```bash
+# Password-only (most common)
+export VALKEY_URL="valkey://:mysecretpassword@localhost:6379/0"
+export REDIS_URL="redis://:mysecretpassword@localhost:6379/0"
+
+# Username + password (Valkey/Redis 6+ ACLs)
+export VALKEY_URL="valkey://myuser:mypassword@localhost:6379/0"
+
+# No authentication (development only)
+export VALKEY_URL="valkey://localhost:6379/0"
+```
+
 ### SSL Support
 
 SSL is supported by using the `valkeys` scheme:

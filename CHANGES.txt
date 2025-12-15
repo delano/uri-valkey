@@ -1,5 +1,14 @@
 URI-Valkey, CHANGES
 
+#### 1.5.0 (2024-12-15) ###############################
+
+* ADDED: Authentication documentation with examples for password-only
+  and username+password formats
+* ADDED: Warning about common password URL format mistake
+  (redis://pass@host vs redis://:pass@host)
+* ADDED: Environment variable examples for VALKEY_URL and REDIS_URL
+
+
 #### 1.4.0 (2024-06-15) ###############################
 
 * CHANGE: Monorepo structure for uri-redis and uri-valkey gems
