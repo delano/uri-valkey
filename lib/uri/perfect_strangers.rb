@@ -64,6 +64,16 @@ module URI
       }.merge(parse_query(query))
       hsh[:password] = password if password
       hsh[:timeout] = hsh[:timeout].to_i if hsh.key?(:timeout)
+
+      # Warn about likely misconfiguration: username without password
+      # This almost always indicates the user meant to use password-only auth
+      # but formatted the URL as redis://password@host instead of redis://:password@host
+      if user && !user.empty? && password.nil?
+        warn "[uri-redis] Warning: URI has username '#{user}' but no password. " \
+             "For password-only auth, use '#{scheme}://:password@host' format. " \
+             'See: https://github.com/delano/uri-valkey#authentication'
+      end
+
       hsh
     end
 
